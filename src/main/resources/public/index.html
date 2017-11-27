@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap-grid.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <title>AeroRisk</title>
+</head>
+
+<body>
+  <header>
+    <!-- Image and text -->
+    <nav class="navbar navbar-light nav-custom">
+      <a class="navbar-brand text-color" href="#">
+                AeroRisk
+            </a>
+      <div class="nav nav-pills nav-fill tab-custom">
+        <a class="nav-item nav-link active" href="#">Расчет риска</a>
+        <a class="nav-item nav-link" href="#">Архив</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <form class="container">
+      <div class="form-group row">
+        <label class="col-md-5" for="org">Организация</label>
+        <select name="org" id="org" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="city">Город</label>
+        <select name="city" id="city" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Самаре</option>
+                    <option value="2">Пензе</option>
+                    <option value="3">Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="district">Район</label>
+        <select name="district" id="district" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="street">Улица</label>
+        <select name="street" id="street" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="house">Дом</label>
+        <select name="house" id="house" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="category">Категория населения</label>
+        <select name="category" id="category" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="drug">Наименование вещества</label>
+        <select name="drug" id="drug" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="unit">Единица измерения</label>
+        <select name="unit" id="unit" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="concentration">Концентрация вещества</label>
+        <select name="concentration" id="concentration" class="form-control col-md-7">
+                    <option selected>Choose...</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="group-button">
+        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="period_start">Начало периода</label>
+        <select name="start_per_unit" id="start_per_unit" class="form-control col-md-3">
+                  <option selected>Начало периода</option>
+                  <option value="1">месяц</option>
+                  <option value="2">год</option>
+              </select>
+        <select name="start_per_value" id="start_per_value" class="form-control col-md-3">
+                    <option selected>Начало периода</option>
+                    <option value="1">Роспотребнадзор по Самаре</option>
+                    <option value="2">Роспотребнадзор по Пензе</option>
+                    <option value="3">Роспотребнадзор по Пензе</option>
+                    <option>Роспотребнадзор по Пензе</option>
+                    <option>...</option>
+                    <option>...</option>
+                </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="period_start">Конец периода</label>
+        <select name="start_per_unit" id="start_per_unit" class="form-control col-md-3">
+                  <option selected>Конец периода</option>
+                  <option value="1">месяц</option>
+                  <option value="2">год</option>
+              </select>
+        <select name="start_per_value" id="start_per_value" class="form-control col-md-3">
+                  <option selected>Конец периода</option>
+                  <option value="1">Роспотребнадзор по Самаре</option>
+                  <option value="2">Роспотребнадзор по Пензе</option>
+                  <option value="3">Роспотребнадзор по Пензе</option>
+                  <option>Роспотребнадзор по Пензе</option>
+                  <option>...</option>
+                  <option>...</option>
+              </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-5" for="date">Дата</label>
+        <input type="date" name="date" id="date" class="form-control col-md-5"></input>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- JS -->
+  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
