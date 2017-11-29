@@ -9,6 +9,6 @@ public class Application {
 
         port(port);
 
-        
+        new ClientRoutes();
     }
 }
