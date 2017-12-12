@@ -11,7 +11,7 @@ public class Substance {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    private Long sub_id;
+    private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -32,11 +32,11 @@ public class Substance {
     }
 
     public Long getId() {
-        return sub_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.sub_id = id;
+        this.id = id;
     }
 
     public String getName() {

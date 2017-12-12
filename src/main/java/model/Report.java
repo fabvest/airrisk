@@ -12,7 +12,7 @@ public class Report {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
-    @Column(name = "organization")
+    @Column(name = "org")
     private String organization;
 
     @Column(name = "city")
@@ -34,8 +34,91 @@ public class Report {
     private String date;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sub_id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Substance substance;
 
+    public Report(String organization, String city, String neighborhood, String street, String houseNumber, int category, String date) {
+        this.organization = organization;
+        this.city = city;
+        this.neighborhood = neighborhood;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.category = category;
+        this.date = date;
+    }
 
+    public Report() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Substance getSubstance() {
+        return substance;
+    }
+
+    public void setSubstance(Substance substance) {
+        this.substance = substance;
+    }
 }
