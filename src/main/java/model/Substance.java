@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Substance {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sub_id", insertable = false, updatable = false)
+//    @Column(name = "sub_id", insertable = false, updatable = false)
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long sub_id;
@@ -24,10 +24,15 @@ public class Substance {
     @Column(name = "value", nullable = false)
     private double value;
 
-    public Substance(String name, String type, double value) {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id", nullable = false)
+    private Report report;
+
+    public Substance(String name, String type, double value, Report report) {
         this.name = name;
         this.type = type;
         this.value = value;
+        this.report = report;
     }
 
     public Substance() {
@@ -63,5 +68,13 @@ public class Substance {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
     }
 }

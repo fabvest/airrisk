@@ -18,11 +18,11 @@ public class RepoImpl implements RepoInterface {
         Transaction tr = null;
         try {
             s = HibernateUtil.getSession();
-//            tr = s.beginTransaction();
-            s.beginTransaction();
+            tr = s.beginTransaction();
+//            s.beginTransaction();
             s.save(emp);
-            s.getTransaction().commit();
-//            tr.commit();
+//            s.getTransaction().commit();
+            tr.commit();
             return true;
 
         } catch (Exception e) {

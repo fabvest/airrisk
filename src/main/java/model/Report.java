@@ -35,9 +35,6 @@ public class Report {
     @Column(name = "date")
     private String date;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sub_id", nullable = false)
-    private Substance substance;
 
     public Report(String organization, String city, String neighborhood, String street, String houseNumber, int category, String date) {
         this.organization = organization;
@@ -114,13 +111,5 @@ public class Report {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public Substance getSubstance() {
-        return substance;
-    }
-
-    public void setSubstance(Substance substance) {
-        this.substance = substance;
     }
 }

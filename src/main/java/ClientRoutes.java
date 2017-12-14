@@ -51,13 +51,14 @@ public class ClientRoutes extends BaseRoutes {
             String date = request.queryParams("date");
 
             Report report = new Report(org, city, district, street, house, Integer.parseInt(cat[1]), date);
-            Substance substance = new Substance(drug, unit, Double.valueOf(concentration));
+            //Substance[] substance = new Substance(drug, unit, Double.valueOf(concentration));
+            boolean flag = repo.addObject(report);
 
-            report.setSubstance(substance);
+            Substance substance = new Substance(drug, unit, Double.valueOf(concentration), report);
 
-            repo.addObject(report);
+            repo.addObject(substance);
 
-            log.info(org+ city+ district+ street+ house+ category+ date + drug + unit + concentration);
+            log.info( org+ city+ district+ street+ house+ category+ date + drug + unit + concentration);
 //            response.redirect("/archive");
             return new ModelAndView(model, "/public/index.html");
         }, new VelocityTemplateEngine());
