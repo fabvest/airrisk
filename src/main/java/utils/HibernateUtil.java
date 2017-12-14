@@ -1,6 +1,7 @@
 package utils;
 
 import model.Report;
+import model.Result;
 import model.Substance;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -39,7 +40,8 @@ public class HibernateUtil {
             Configuration configuration = new Configuration();
             configuration.configure()
                     .addAnnotatedClass(Report.class)
-                    .addAnnotatedClass(Substance.class);
+                    .addAnnotatedClass(Substance.class)
+                    .addAnnotatedClass(Result.class);
 
 
             serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

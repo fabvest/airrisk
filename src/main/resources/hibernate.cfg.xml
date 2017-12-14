@@ -11,10 +11,11 @@
     <property name="connection.password">fabvest</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hbm2ddl.auto">update</property>
+    <property name="hbm2ddl.auto">create</property>
 
     <mapping class="model.Substance"/>
     <mapping class="model.Report"/>
+    <mapping class="model.Result"/>
 
     <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
     <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->

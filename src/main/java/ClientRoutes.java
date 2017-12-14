@@ -1,4 +1,5 @@
 import model.Report;
+import model.Result;
 import model.Substance;
 import repository.RepoImpl;
 import site.BaseRoutes;
@@ -58,6 +59,9 @@ public class ClientRoutes extends BaseRoutes {
 
             repo.addObject(substance);
 
+            Result result = new Result("new", 0.32323, true, report);
+
+            repo.addObject(result);
             log.info( org+ city+ district+ street+ house+ category+ date + drug + unit + concentration);
 //            response.redirect("/archive");
             return new ModelAndView(model, "/public/index.html");

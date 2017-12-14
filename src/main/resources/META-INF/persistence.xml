@@ -30,6 +30,7 @@
 
         <class>model.Report</class>
         <class>model.Substance</class>
+        <class>model.Result</class>
 
 
         <properties>
@@ -39,7 +40,7 @@
             <property name="javax.persistence.jdbc.password" value="fabvest"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>
