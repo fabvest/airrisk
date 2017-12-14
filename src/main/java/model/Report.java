@@ -8,6 +8,8 @@ import javax.persistence.*;
 @Table(name = "report")
 public class Report {
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", insertable = false, updatable = false)
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
@@ -34,7 +36,7 @@ public class Report {
     private String date;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "sub_id", nullable = false)
     private Substance substance;
 
     public Report(String organization, String city, String neighborhood, String street, String houseNumber, int category, String date) {

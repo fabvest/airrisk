@@ -17,7 +17,7 @@ public class RepoImpl implements RepoInterface {
 
         Transaction tr = null;
         try {
-            s = HibernateUtil.getSessionFactory().getCurrentSession();
+            s = HibernateUtil.getSession();
 //            tr = s.beginTransaction();
             s.beginTransaction();
             s.save(emp);

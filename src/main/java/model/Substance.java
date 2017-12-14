@@ -9,9 +9,11 @@ import javax.persistence.*;
 @Table(name = "substance")
 public class Substance {
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "sub_id", insertable = false, updatable = false)
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    private Long id;
+    private Long sub_id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -32,11 +34,11 @@ public class Substance {
     }
 
     public Long getId() {
-        return id;
+        return sub_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.sub_id = id;
     }
 
     public String getName() {
