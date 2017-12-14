@@ -1,8 +1,10 @@
 package repository;
 
+import model.Result;
+import model.Substance;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import utils.HibernateUtil;
 
 import java.sql.SQLException;
@@ -76,4 +78,44 @@ public class RepoImpl implements RepoInterface {
         }
         return ev;
     }
+
+    @Override
+    public ArrayList<Substance> getSubByReport(long id) throws SQLException {
+        Session s = null;
+        ArrayList<Substance> l = null;
+        try {
+            s = HibernateUtil.getSession();
+            Query query = s.createQuery("from Substance where id = :id");
+            query.setParameter("id", id);
+            l = (ArrayList<Substance>) query.list();
+        }catch (Exception e){
+            System.out.println("error with get event by email");
+        }finally {
+            if(s != null && s.isOpen()) {
+                s.close();
+            }
+        }
+        return l;
+    }
+
+    @Override
+    public ArrayList<Result> getResByReport(long id) throws SQLException {
+        Session s = null;
+        ArrayList<Result> l = null;
+        try {
+            s = HibernateUtil.getSession();
+            Query query = s.createQuery("from Result where id = :id");
+            query.setParameter("id", id);
+            l = (ArrayList<Result>) query.list();
+        }catch (Exception e){
+            System.out.println("error with get event by email");
+        }finally {
+            if(s != null && s.isOpen()) {
+                s.close();
+            }
+        }
+        return l;
+    }
+
+
 }

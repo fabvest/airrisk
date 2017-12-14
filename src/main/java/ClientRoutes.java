@@ -4,6 +4,7 @@ import model.Substance;
 import repository.RepoImpl;
 import site.BaseRoutes;
 import spark.ModelAndView;
+import utils.Formula;
 import utils.VelocityTemplateEngine;
 
 import java.util.HashMap;
@@ -52,18 +53,17 @@ public class ClientRoutes extends BaseRoutes {
             String date = request.queryParams("date");
 
             Report report = new Report(org, city, district, street, house, Integer.parseInt(cat[1]), date);
-            //Substance[] substance = new Substance(drug, unit, Double.valueOf(concentration));
-            boolean flag = repo.addObject(report);
+            repo.addObject(report);
 
             Substance substance = new Substance(drug, unit, Double.valueOf(concentration), report);
-
             repo.addObject(substance);
 
             Result result = new Result("new", 0.32323, true, report);
-
             repo.addObject(result);
+
             log.info( org+ city+ district+ street+ house+ category+ date + drug + unit + concentration);
-//            response.redirect("/archive");
+
+            Formula.calculate(report.getId());
             return new ModelAndView(model, "/public/index.html");
         }, new VelocityTemplateEngine());
     }

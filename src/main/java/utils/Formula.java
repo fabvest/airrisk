@@ -1,5 +1,10 @@
 package utils;
 
+import model.Report;
+import repository.RepoImpl;
+
+import java.sql.SQLException;
+
 public class Formula {
 
     public Double riskCarcinogens(int type, double cA, double cH){
@@ -28,5 +33,15 @@ public class Formula {
     public Float riskNoncarcinogenic(){
 
         return null;
+    }
+
+    public static void calculate(Long id){
+        RepoImpl repo = new RepoImpl();
+        try {
+            Report report = (Report) repo.getObject(Report.class, id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
