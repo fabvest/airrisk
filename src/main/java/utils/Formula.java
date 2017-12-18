@@ -1,13 +1,16 @@
 package utils;
 
 import model.Report;
+import model.Result;
+import model.Substance;
 import repository.RepoImpl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Formula {
 
-    public Double riskCarcinogens(int type, double cA, double cH){
+    public static Double riskCarcinogens(int type, double cA, double cH){
         double result;
 
         switch (type){
@@ -37,11 +40,24 @@ public class Formula {
 
     public static void calculate(Long id){
         RepoImpl repo = new RepoImpl();
+        Report report = new Report();
+        ArrayList<Substance> substance = new ArrayList<Substance>();
         try {
-            Report report = (Report) repo.getObject(Report.class, id);
+            report = (Report) repo.getObject(Report.class, id);
+            substance = repo.getSubByReport(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        for(int i = 0; i < substance.size(); i++){
+            Substance sub = substance.get(i);
+            double res = riskCarcinogens(report.getCategory(), sub.getValue(), sub.getValue());
+            Result result = new Result(sub.getName(), res, true, report);
+            try {
+                repo.addObject(result);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
