@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Table(name = "substance")
 public class Substance {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "sub_id", insertable = false, updatable = false)
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long sub_id;

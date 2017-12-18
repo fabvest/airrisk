@@ -8,8 +8,6 @@ import javax.persistence.*;
 @Table(name = "result")
 public class Result {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", insertable = false, updatable = false)
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long res_id;
