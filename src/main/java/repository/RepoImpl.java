@@ -1,5 +1,6 @@
 package repository;
 
+import model.Report;
 import model.Result;
 import model.Substance;
 import org.hibernate.Session;
@@ -60,14 +61,14 @@ public class RepoImpl implements RepoInterface {
     }
 
     @Override
-    public List<Object> getAllObjects(Class clazz) throws SQLException {
+    public ArrayList<Report> getAllObjects(Class clazz) throws SQLException {
         Session session = null;
         Transaction tx = null;
-        List ev = new ArrayList<>();
+        ArrayList ev = new ArrayList<>();
         try {
             session = HibernateUtil.getSession();
             tx = session.beginTransaction();
-            ev = session.createCriteria(clazz).list();
+            ev = (ArrayList) session.createCriteria(clazz).list();
             tx.commit();
         } catch (Exception e) {
             System.out.println("error with get all ev types");

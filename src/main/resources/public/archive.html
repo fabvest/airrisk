@@ -32,11 +32,9 @@
   <main>
 
     <ul class="list-group">
-
-      <a href="/report" class="list-group-item list-group-item-action list-group-item-primary"><span>date </span><span>Cras justo odio</span></a>
-      <a href="/report" class="list-group-item list-group-item-action list-group-item-danger">date Cras justo odio</a>
-      <a href="/report" class="list-group-item list-group-item-action list-group-item-danger">date Cras justo odio</a>
-      <a href="/report" class="list-group-item list-group-item-action list-group-item-primary">date Cras justo odio</a>
+      #foreach($Reports in $Report)
+      <a href="/report/$Reports.id" name="" class="list-group-item list-group-item-action list-group-item-danger">$Reports.date $Reports.city $Reports.street $Reports.houseNumber</a>
+      #end
     </ul>
 
   </main>

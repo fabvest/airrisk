@@ -44,10 +44,12 @@
           <th>Риск</th>
           </thead>
           <tbody>
+          <!--#foreach($Results in $Result)-->
           <tr>
-            <td>Бла-бла-бла</td>
-            <td>Бла-бла-бла</td>
+            <td>$Results.res_name</td>
+            <td>$Results.value</td>
           </tr>
+          <!--#end-->
           </tbody>
         </table>
       </div>
@@ -60,12 +62,14 @@
           <th>Вещество</th>
           <th>Риск</th>
           </thead>
+          <!--#foreach($Results in $Result)-->
           <tbody>
           <tr>
-            <td>Бла-бла-бла</td>
-            <td>Бла-бла-бла</td>
+            <td>$Results.res_name</td>
+            <td>$Results.value</td>
           </tr>
           </tbody>
+          <!--#end-->
         </table>
       </div>
     </div>

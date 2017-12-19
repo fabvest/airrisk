@@ -7,6 +7,7 @@ import spark.ModelAndView;
 import utils.Formula;
 import utils.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -30,11 +31,24 @@ public class ClientRoutes extends BaseRoutes {
 
         get(ROOT + "archive", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
+            ArrayList<Report> report = repo.getAllObjects(Report.class);
+            model.put("Report", report);
             return new ModelAndView(model, "/public/archive.html");
         }, new VelocityTemplateEngine());
 
-        get(ROOT + "report", (request, response) -> {
+        get(ROOT + "report/:id", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
+//            Long id = Long.parseLong(request.splat()[0]);
+            Long id = Long.valueOf(request.params(":id"));
+            Report report = (Report) repo.getObject(Report.class, id);
+            ArrayList<Substance> substance = repo.getSubByReport(id);
+            ArrayList<Result> results = repo.getResByReport(id);
+
+//            Holder holder = new Holder(report, substance, results);
+            model.put("Report", report);
+            model.put("Substance", substance);
+            model.put("Result", results);
+
             return new ModelAndView(model, "/public/report.html");
         }, new VelocityTemplateEngine());
 
