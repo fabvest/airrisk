@@ -7,10 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
 
   <title>AeroRisk</title>
 </head>
@@ -24,7 +24,7 @@
     </a>
     <div class="nav nav-pills nav-fill tab-custom">
       <a class="nav-item nav-link" href="/index">Расчет риска</a>
-      <a class="nav-item nav-link active" href="">Архив</a>
+      <a class="nav-item nav-link active" href="/archive">Архив</a>
     </div>
   </nav>
 </header>
@@ -44,12 +44,12 @@
           <th>Риск</th>
           </thead>
           <tbody>
-          <!--#foreach($Results in $Result)-->
+          #foreach($Results in $Result)
           <tr>
             <td>$Results.res_name</td>
             <td>$Results.value</td>
           </tr>
-          <!--#end-->
+          #end
           </tbody>
         </table>
       </div>
@@ -62,14 +62,14 @@
           <th>Вещество</th>
           <th>Риск</th>
           </thead>
-          <!--#foreach($Results in $Result)-->
+          #foreach($Results in $Result)
           <tbody>
           <tr>
             <td>$Results.res_name</td>
             <td>$Results.value</td>
           </tr>
           </tbody>
-          <!--#end-->
+          #end
         </table>
       </div>
     </div>
@@ -84,9 +84,9 @@
 </main>
 
 <!-- JS -->
-<script src="js/bootstrap.bundle.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/script.js"></script>
+<script src="/js/bootstrap.bundle.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/script.js"></script>
 
 </body>
 
