@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <layout></layout>
     <vueform></vueform>
   </div>
 </template>
@@ -8,11 +7,20 @@
 export default {
   name: 'app',
   components: {
-    'layout': require('@/components/layout/layout.vue'),
     'vueform': require('@/components/form/form.vue')
   }
 }
 </script>
-<style lang="scss">
-  @import url('styles/index.scss');
+<style lang="css">
+  @import url('assets/css/bootstrap-grid.css');
+  @import url('assets/css/bootstrap-reboot.min.css');
+  @import url('assets/css/bootstrap.min.css');
+  @import url('assets/css/main.css');
 </style>
+<!--<script src="/assets/js/script.js"></script>-->
+<!--<script src="/assets/js/bootstrap.bundle.js"></script>-->
+<!--<script>-->
+  <!--require('assets/js/bootstrap.min.js');-->
+  <!--require('assets/js/script.js');-->
+  <!--require('assets/js/bootstrap.bundle.js');-->
+<!--</script>-->
