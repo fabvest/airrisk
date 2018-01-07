@@ -2,46 +2,55 @@
 <div>
   <div class="form-group row">
     <label class="col-md-5" for="drug">Наименование вещества</label>
-    <select name="drug" id="drug" class="form-control col-md-7">
-      <option selected>Выберите...</option>
-      <option value="Морфий">Морфий</option>
-      <option value="Свинец">Свинец</option>
-      <option value="Амиак">Амиак</option>
+    <select v-model="drug" id="drug" class="form-control col-md-7">
+      <option selected disabled>Выберите...</option>
+      <option v-for="drug in arrayDrug" v-bind:value="drug.id">{{ drug.text }}</option>
     </select>
   </div>
   <div class="form-group row">
     <label class="col-md-5" for="unit">Единица измерения</label>
-    <select name="unit" id="unit" class="form-control col-md-7">
-      <option selected>Выберите...</option>
-      <option value="мг/см3">мг/см3</option>
-      <option value="г/м3">г/м3</option>
-      <option value="мкг/м3">мкг/м3</option>
+    <select v-model="unit" id="unit" class="form-control col-md-7">
+      <option selected disabled>Выберите...</option>
+      <option v-for="unit in arrayUnit" v-bind:value="unit.id">{{ unit.text }}</option>
     </select>
   </div>
   <div class="form-group row">
     <label class="col-md-5" for="concentration">Концентрация вещества</label>
-    <input name="concentration" id="concentration" class="form-control col-md-7"/>
+    <input v-model="concentration" id="concentration" class="form-control col-md-7" type="number">
   </div>
-  <button v-on:click="onRemoveForm()" class="btn btn-primary" type="button">Удалить вещество {{ indexForm }}</button>
+  <button v-on:click="onRemoveForm()" class="btn btn-primary" type="button">Удалить вещество</button>
   <hr>
 </div>
 </template>
 <script>
   export default {
-    props: [ 'indexForm' ],
     data () {
       return {
-        arrayOption: [
-          { id: 1, text: 'first point' },
-          { id: 2, text: 'second point' },
-          { id: 3, text: 'third point' }
+        drug: null,
+        unit: null,
+        concentration: null,
+        arrayDrug: [
+          { id: 1, text: 'Морфий' },
+          { id: 2, text: 'Свинец' },
+          { id: 3, text: 'Амиак' }
         ],
-        arraySelectForm: [ 0 ]
+        arrayUnit: [
+          { id: 1, text: 'мг/см3' },
+          { id: 2, text: 'г/м3' },
+          { id: 3, text: 'мкг/м3' }
+        ]
       }
     },
     methods: {
       onRemoveForm () {
         this.$emit('removeDrug')
+      },
+      submit () {
+        return {
+          drug: this.drug,
+          unit: this.unit,
+          concentration: Number(this.concentration)
+        }
       }
     }
   }

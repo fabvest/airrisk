@@ -10,7 +10,7 @@
 <script>
   var _ = require('lodash')
   export default {
-    props: [ 'arrayOption' ],
+    props: [ 'arrayDrug' ],
     data () {
       return {
         formValue: {}
