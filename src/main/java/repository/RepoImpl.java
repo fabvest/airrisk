@@ -19,14 +19,11 @@ public class RepoImpl implements RepoInterface {
     @Override
     public boolean addObject(Object emp) throws SQLException {
         Session s = null;
-
         Transaction tr = null;
         try {
             s = HibernateUtil.getSession();
             tr = s.beginTransaction();
-//            s.beginTransaction();
             s.save(emp);
-//            s.getTransaction().commit();
             tr.commit();
             return true;
 
@@ -117,6 +114,4 @@ public class RepoImpl implements RepoInterface {
         }
         return l;
     }
-
-
 }
