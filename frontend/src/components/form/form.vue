@@ -3,80 +3,62 @@
     <h2>Место нахождения</h2>
     <div class="form-group row">
       <label class="col-md-5">Организация</label>
-      <select v-model="org" class="form-control col-md-7">
+      <select v-model="org" class="form-control col-md-7" required>
         <option selected disabled>Выберите...</option>
         <option v-for="org in arrayOrg" v-bind:value="org">{{ org }}</option>
       </select>
     </div>
     <div class="form-group row">
       <label class="col-md-5" for="city">Город</label>
-      <input v-model="city" id="city" class="form-control col-md-7" type="text">
+      <input v-model="city" id="city" class="form-control col-md-7" type="text" required>
     </div>
     <div class="form-group row">
       <label class="col-md-5" for="district">Район</label>
-      <input v-model="district" id="district" class="form-control col-md-7" type="text">
+      <input v-model="district" id="district" class="form-control col-md-7" type="text" required>
     </div>
     <div class="form-group row">
       <label class="col-md-5" for="street">Улица</label>
-      <input v-model="street" id="street" class="form-control col-md-7" type="text">
+      <input v-model="street" id="street" class="form-control col-md-7" type="text" required>
     </div>
     <div class="form-group row">
       <label class="col-md-5" for="house">Дом</label>
-      <input v-model="house" id="house" class="form-control col-md-7" type="number">
+      <input v-model="house" id="house" class="form-control col-md-7" type="number" required>
     </div>
     <div class="form-group row">
       <label class="col-md-5" for="category">Категория населения</label>
-      <select v-model="catPeople" id="category" class="form-control col-md-7">
+      <select v-model="catPeople" id="category" class="form-control col-md-7" required>
         <option selected disabled>Выберите...</option>
         <option v-for="cat in arrayCatPeople" v-bind:value="cat.value">{{ cat.text }}</option>
       </select>
     </div>
     <hr>
-    <div class="row">
+    <div class="container row">
       <h2>Вещества</h2>
-      <button v-on:click="addDrug()" type="button" class="btn btn-primary">Добавить вещество</button>
+      <button v-on:click="addDrug()" type="button" class="btn btn-primary" style="margin-left: 20px;">Добавить вещество</button>
     </div>
     <drug v-for="index in arraySelectForm" @removeDrug="removeDrugIndex(index)" ref="customSelect"></drug>
     <h2>Период</h2>
     <div class="form-group row">
       <!-- Месяц -->
       <label class="col-md-5">Начало периода</label>
-      <select v-model="startPerMonth" id="start_per_unit" class="form-control col-md-3">
+      <select v-model="startPerMonth" id="start_per_unit" class="form-control col-md-3" required>
         <option selected disabled>Выберите месяц...</option>
-        <option value="1">месяц</option>
-        <option value="2">год</option>
+        <option v-for="(month, index) in arrayMonth" v-bind:value="index">{{ month }}</option>
       </select>
       <!-- Год -->
-      <select v-model="startPerYear" id="start_per_value" class="form-control col-md-3">
-        <option selected disabled>Выберите год...</option>
-        <option value="1">Роспотребнадзор по Самаре</option>
-        <option value="2">Роспотребнадзор по Пензе</option>
-        <option value="3">Роспотребнадзор по Пензе</option>
-        <option>Роспотребнадзор по Пензе</option>
-        <option>...</option>
-        <option>...</option>
-      </select>
+      <input v-model="startPerYear" type="number" class="form-control col-md-3 offset-md-1" placeholder="Введите год...">
     </div>
     <div class="form-group row">
       <label class="col-md-5">Конец периода</label>
-      <select v-model="endPerMonth" id="end_per_unit" class="form-control col-md-3">
-        <option selected>Конец периода</option>
-        <option value="1">месяц</option>
-        <option value="2">год</option>
+      <select v-model="endPerMonth" id="end_per_unit" class="form-control col-md-3" required>
+        <option selected disabled>Выберите месяц...</option>
+        <option v-for="(month, index) in arrayMonth" v-bind:value="index">{{ month }}</option>
       </select>
-      <select v-model="endPerYear" id="end_per_value" class="form-control col-md-3">
-        <option selected>Конец периода</option>
-        <option value="1">Роспотребнадзор по Самаре</option>
-        <option value="2">Роспотребнадзор по Пензе</option>
-        <option value="3">Роспотребнадзор по Пензе</option>
-        <option>Роспотребнадзор по Пензе</option>
-        <option>...</option>
-        <option>...</option>
-      </select>
+      <input v-model="endPerYear" type="number" class="form-control col-md-3 offset-md-1" placeholder="Введите год...">
     </div>
     <div class="form-group row">
       <label class="col-md-5" for="date">Дата</label>
-      <input type="date" name="date" id="date" class="form-control col-md-5"/>
+      <input type="date" v-model="date" id="date" class="form-control col-md-7" required>
     </div>
     <div>
       <button v-on:click="submit()" type="button" class="btn btn-primary btn-lg btn-block">Рассчитать</button>
@@ -102,6 +84,7 @@
         startPerYear: null,
         endPerMonth: null,
         endPerYear: null,
+        date: null,
         arrayOrg: [
           'Роспотребнадзор по Пензе',
           'Роспотребнадзор по Самаре'
@@ -111,7 +94,8 @@
           { value: 'Подростки (от 14 до 17 лет) -2', text: 'Подростки (от 14 до 17 лет)' },
           { value: 'Взрослые (от 18 лет) -3', text: 'Взрослые (от 18 лет)' }
         ],
-        arraySelectForm: [ 0 ]
+        arraySelectForm: [ 0 ],
+        arrayMonth: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябь', 'Ноябрь', 'Декабрь']
       }
     },
     methods: {
@@ -120,6 +104,12 @@
       },
       removeDrugIndex: function (index) {
         this.arraySelectForm = _.remove(this.arraySelectForm, item => item === index)
+      },
+      postDataForm (data) {
+        this.$http.post('/getinfo', data).then(
+          (response) => console.log(response), // successful
+          (responseError) => console.error(responseError) // error
+        )
       },
       submit () {
         let formValue = {}
@@ -141,7 +131,9 @@
         formValue.startPerYear = this.startPerYear
         formValue.endPerMonth = this.endPerMonth
         formValue.endPerYear = this.endPerYear
-        console.log('submit!', formValue)
+        formValue.date = this.date
+        // post data
+        this.postDataForm(formValue)
       }
     }
   }

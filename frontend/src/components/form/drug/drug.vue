@@ -9,14 +9,14 @@
   </div>
   <div class="form-group row">
     <label class="col-md-5" for="unit">Единица измерения</label>
-    <select v-model="unit" id="unit" class="form-control col-md-7">
+    <select v-model="unit" id="unit" class="form-control col-md-7" required>
       <option selected disabled>Выберите...</option>
       <option v-for="unit in arrayUnit" v-bind:value="unit.id">{{ unit.text }}</option>
     </select>
   </div>
   <div class="form-group row">
     <label class="col-md-5" for="concentration">Концентрация вещества</label>
-    <input v-model="concentration" id="concentration" class="form-control col-md-7" type="number">
+    <input v-model="concentration" id="concentration" class="form-control col-md-7" type="number" required>
   </div>
   <button v-on:click="onRemoveForm()" class="btn btn-primary" type="button">Удалить вещество</button>
   <hr>
