@@ -3,7 +3,8 @@ var AutocompleteControlForm = {
   data : function () {
     return {
       currentValue: null,
-      searchValue: ''
+      searchValue: '',
+      isValid: false
     }
   },
   methods: {
@@ -55,11 +56,11 @@ var DrugControlForm = {
   },
   methods: {
     onRemoveForm () {
-      this.$emit('removeDrug')
+      this.$emit('removeDrug');
     },
     submit () {
       return {
-        drug: this.$refs['drug-autocomplete'].currentValue,
+        drug: this.$refs['drug-autocomplete'].currentValue.id,
         unit: this.unit,
         concentration: Number(this.concentration)
       }
@@ -74,13 +75,6 @@ var DrugControlForm = {
     <label class="col-md-5">Наименование вещества</label>
     <v-autocomplete v-bind:array-object="arrayDrug" ref="drug-autocomplete" class="col-md-7"></v-autocomplete>
   </div>
-  <!--<div class="form-group row">-->
-    <!--<label class="col-md-5" for="drug">Наименование вещества</label>-->
-    <!--<select v-model="drug" id="drug" class="form-control col-md-7">-->
-      <!--<option selected disabled>Выберите...</option>-->
-      <!--<option v-for="drug in arrayDrug" v-bind:value="drug.id">{{ drug.text }}</option>-->
-    <!--</select>-->
-  <!--</div>-->
   <div class="form-group row">
     <label class="col-md-5" for="unit">Единица измерения</label>
     <select v-model="unit" id="unit" class="form-control col-md-7" required>
@@ -127,38 +121,38 @@ new Vue({
   },
   methods: {
     addDrug () {
-      this.arraySelectForm.push(this.arraySelectForm.length)
+      this.arraySelectForm.push(this.arraySelectForm.length);
     },
     removeDrugIndex: function (index) {
-      this.arraySelectForm = _.remove(this.arraySelectForm, item => item === index)
+      this.arraySelectForm = _.remove(this.arraySelectForm, item => item === index);
     },
     postDataForm (data) {
       this.$http.post('/getinfo', data).then(
         (response) => console.log(response), // successful
         (responseError) => console.error(responseError) // error
-      )
+      );
     },
     submit () {
-      let formValue = {}
+      let formValue = {};
       // Set value array drag
-      let arrayDrag = []
+      let arrayDrag = [];
       _.forEach(this.arraySelectForm, (value, key) => {
-        const formValue = this.$refs.customSelect[key].submit()
-        arrayDrag.push(formValue)
-      })
-      formValue.arrayDrag = arrayDrag
+        const formValue = this.$refs.customSelect[key].submit();
+        arrayDrag.push(formValue);
+      });
+      formValue.arrayDrag = arrayDrag;
       // Set location info
-      formValue.org = this.org
-      formValue.city = this.city
-      formValue.district = this.district
-      formValue.street = this.street
-      formValue.house = this.house
-      formValue.catPeople = this.catPeople
-      formValue.startPerMonth = this.startPerMonth
-      formValue.startPerYear = this.startPerYear
-      formValue.endPerMonth = this.endPerMonth
-      formValue.endPerYear = this.endPerYear
-      formValue.date = this.date
+      formValue.org = this.org;
+      formValue.city = this.city;
+      formValue.district = this.district;
+      formValue.street = this.street;
+      formValue.house = Number(this.house);
+      formValue.catPeople = this.catPeople;
+      formValue.startPerMonth = Number(this.startPerMonth + 1);
+      formValue.startPerYear = Number(this.startPerYear);
+      formValue.endPerMonth = Number(this.endPerMonth + 1);
+      formValue.endPerYear = Number(this.endPerYear);
+      formValue.date = this.date;
       // post data
       this.postDataForm(formValue)
     }
