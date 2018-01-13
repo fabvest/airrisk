@@ -16,6 +16,7 @@
 </head>
 
 <body>
+  <!--<script src="js/script.js"></script>-->
   <header>
     <!-- Image and text -->
     <nav class="navbar navbar-light nav-custom">
@@ -30,122 +31,17 @@
   </header>
 
   <main>
-    <form class="container" name="getinfo" method="post" action="/getinfo">
-      <div class="form-group row">
-        <label class="col-md-5" for="org">Организация</label>
-        <select name="org" id="org" class="form-control col-md-7">
-                    <option selected>Выберите...</option>
-                    <option value="1">Роспотребнадзор по Самаре</option>
-                    <option value="2">Роспотребнадзор по Пензе</option>
-                </select>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="city">Город</label>
-          <input name="city" id="city" class="form-control col-md-7"/>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="district">Район</label>
-          <input name="district" id="district" class="form-control col-md-7"/>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="street">Улица</label>
-          <input name="street" id="street" class="form-control col-md-7"/>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="house">Дом</label>
-          <input name="house" id="house" class="form-control col-md-7"/>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="category">Категория населения</label>
-        <select name="category" id="category" class="form-control col-md-7">
-                    <option selected>Выберите...</option>
-                    <option value="Дети (до 14 лет) -1">Дети (до 14 лет)</option>
-                    <option value="Подростки (от 14 до 17 лет) -2">Подростки (от 14 до 17 лет)</option>
-                    <option value="Взрослые (от 18 лет) -3">Взрослые (от 18 лет)</option>
-                </select>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="drug">Наименование вещества</label>
-        <select name="drug" id="drug" class="form-control col-md-7">
-                    <option selected>Выберите...</option>
-                    <option value="Морфий">Морфий</option>
-                    <option value="Свинец">Свинец</option>
-                    <option value="Амиак">Амиак</option>
-                </select>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="unit">Единица измерения</label>
-        <select name="unit" id="unit" class="form-control col-md-7">
-                    <option selected>Выберите...</option>
-                    <option value="мг/см3">мг/см3</option>
-                    <option value="г/м3">г/м3</option>
-                    <option value="мкг/м3">мкг/м3</option>
-                </select>
-      </div>
-      <div class="form-group row">
-        <label class="col-md-5" for="concentration">Концентрация вещества</label>
-          <input name="concentration" id="concentration" class="form-control col-md-7"/>
-      </div>
-      <div class="group-button">
-        <button type="button" class="btn btn-primary btn-lg">Добавить вещество</button>
-        <button type="button" class="btn btn-primary btn-lg">Удалить вещество</button>
-      </div>
-
-
-
-      <!--<div class="form-group row">-->
-        <!--<label class="col-md-5" for="period_start">Начало периода</label>-->
-        <!--<select name="start_per_unit" id="start_per_unit" class="form-control col-md-3">-->
-                  <!--<option selected>Начало периода</option>-->
-                  <!--<option value="1">месяц</option>-->
-                  <!--<option value="2">год</option>-->
-              <!--</select>-->
-        <!--<select name="start_per_value" id="start_per_value" class="form-control col-md-3">-->
-                    <!--<option selected>Начало периода</option>-->
-                    <!--<option value="1">Роспотребнадзор по Самаре</option>-->
-                    <!--<option value="2">Роспотребнадзор по Пензе</option>-->
-                    <!--<option value="3">Роспотребнадзор по Пензе</option>-->
-                    <!--<option>Роспотребнадзор по Пензе</option>-->
-                    <!--<option>...</option>-->
-                    <!--<option>...</option>-->
-                <!--</select>-->
-      <!--</div>-->
-      <!--<div class="form-group row">-->
-        <!--<label class="col-md-5" for="period_start">Конец периода</label>-->
-        <!--<select name="start_per_unit" id="start_per_unit" class="form-control col-md-3">-->
-                  <!--<option selected>Конец периода</option>-->
-                  <!--<option value="1">месяц</option>-->
-                  <!--<option value="2">год</option>-->
-              <!--</select>-->
-      <!--&lt;!&ndash; </div>-->
-      <!--<div class="form-group row"> &ndash;&gt;-->
-        <!--<select name="start_per_value" id="start_per_value" class="form-control col-md-3">-->
-                  <!--<option selected>Конец периода</option>-->
-                  <!--<option value="1">Роспотребнадзор по Самаре</option>-->
-                  <!--<option value="2">Роспотребнадзор по Пензе</option>-->
-                  <!--<option value="3">Роспотребнадзор по Пензе</option>-->
-                  <!--<option>Роспотребнадзор по Пензе</option>-->
-                  <!--<option>...</option>-->
-                  <!--<option>...</option>-->
-              <!--</select>-->
-      <!--</div>-->
-
-
-
-      <div class="form-group row">
-        <label class="col-md-5" for="date">Дата</label>
-          <input type="date" name="date" id="date" class="form-control col-md-5"/>
-      </div>
-      <div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Рассчитать</button>
-      </div>
-    </form>
+    <div id="v-form"></div>
   </main>
 
   <!-- JS -->
-  <script src="js/bootstrap.bundle.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js"></script>
+  <script src="js/vue-app.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+  <!--<script src="js/bootstrap.bundle.js"></script>-->
+  <!--<script src="js/bootstrap.min.js"></script>-->
 
 </body>
 
