@@ -1,29 +1,55 @@
 var AutocompleteControlForm = {
-  props: [ 'arrayObject' ],
+  props: [ 'arrayObject', 'errorMessage' ],
   data : function () {
     return {
       currentValue: null,
       searchValue: '',
-      isValid: false
+      isTouch: false,
+      isValid: false,
+      isFocus: false
     }
   },
   methods: {
     getArraySearchValue: function () {
-      if (this.searchValue.length < 3 || this.currentValue && this.searchValue === this.currentValue.text) return [];
+      if (this.searchValue.length < 0 || this.currentValue && this.searchValue === this.currentValue.text) return [];
       const arraySearchValue = _.filter(this.arrayObject, (drug) => drug.text.toLowerCase().indexOf(this.searchValue.toLowerCase()) !== -1);
       return this.searchValue.length ? arraySearchValue : [];
     },
     isShowList: function () {
-      return !!this.searchValue.length;
+      return (this.isFocus && !!this.searchValue.length) || this.isFocus;
     },
-    selectedValue: function (object) {
+    selectedValue: function(object) {
       this.currentValue = object;
       this.searchValue = object.text;
+    },
+    onTestValid: function () {
+      if (!this.isTouch) return;
+      this.isValid = !!this.currentValue && this.currentValue.text === this.searchValue;
+    },
+    onBlurInput: function () {
+      setTimeout(() => {
+        this.isFocus = false;
+        this.onTestValid();
+      }, 200);
+    },
+    onFocusInput: function () {
+      this.isFocus = this.isTouch = true;
+    },
+    showErrorMessage: function () {
+      return !this.isValid && this.searchValue.length && !this.isFocus && this.isTouch;
     }
   },
   template: `
     <div class="autocomplete">
-      <input v-model="searchValue" class="form-control" type="text" placeholder="введите...">
+      <input
+        v-model="searchValue"
+        v-on:focus="onFocusInput()"
+        v-on:blur="onBlurInput()"
+        v-bind:class="{ 'is-invalid': showErrorMessage(), 'is-valid': isValid }"
+        class="form-control"
+        type="text"
+        placeholder="введите..."
+      >
       <ul v-if="isShowList()" class="list-group autocomplete__list">
         <li
           v-for="item in getArraySearchValue()" 
@@ -33,6 +59,9 @@ var AutocompleteControlForm = {
         {{ item.text }}
         </li>
       </ul>
+      <p v-bind:class="{ 'display-block': showErrorMessage() }" class="invalid-feedback">
+        {{ errorMessage }}
+      </p>
     </div>
   `
 };
@@ -51,7 +80,8 @@ var DrugControlForm = {
         { id: 1, text: 'мг/см3' },
         { id: 2, text: 'г/м3' },
         { id: 3, text: 'мкг/м3' }
-      ]
+      ],
+      errorMessageDrug: 'Вы не выбрали вещество.'
     }
   },
   methods: {
@@ -73,7 +103,7 @@ var DrugControlForm = {
   <div>
   <div class="form-group row">
     <label class="col-md-5">Наименование вещества</label>
-    <v-autocomplete v-bind:array-object="arrayDrug" ref="drug-autocomplete" class="col-md-7"></v-autocomplete>
+    <v-autocomplete v-bind:array-object="arrayDrug" v-bind:errorMessage="errorMessageDrug" ref="drug-autocomplete" class="col-md-7"></v-autocomplete>
   </div>
   <div class="form-group row">
     <label class="col-md-5" for="unit">Единица измерения</label>
