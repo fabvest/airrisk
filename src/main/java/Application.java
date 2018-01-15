@@ -8,7 +8,6 @@ public class Application {
         Integer port = 5555;
 
         port(port);
-        get("/hello", (req, res) -> "Hello World");
 
         new ClientRoutes();
     }

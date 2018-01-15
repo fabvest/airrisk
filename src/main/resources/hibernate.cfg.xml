@@ -5,13 +5,13 @@
 <hibernate-configuration>
     <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
-    <property name="connection.url">jdbc:postgresql://localhost:5566/airrisk</property>
+    <property name="connection.url">jdbc:postgresql://localhost:5/airrisk</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
     <property name="connection.username">postgres</property>
     <property name="connection.password">fabvest</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hbm2ddl.auto">update</property>
+    <property name="hbm2ddl.auto">create-drop</property>
 
     <mapping class="model.Substance"/>
     <mapping class="model.Report"/>
