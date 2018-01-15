@@ -69,3 +69,29 @@
   font-family: Verdana, sans-serif;
   font-size: 100%;
 }
+
+.autocomplete {
+  position: relative;
+  padding: 0;
+}
+
+.autocomplete__list {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(100%);
+  z-index: 9;
+}
+
+.display-block {
+  display: block;
+}
+
+.title-group {
+  margin: 10px 0;
+}
+
+.title-button {
+  margin-left: 20px;
+}
