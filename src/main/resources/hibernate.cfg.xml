@@ -16,6 +16,7 @@
     <mapping class="model.Substance"/>
     <mapping class="model.Report"/>
     <mapping class="model.Result"/>
+    <mapping class="model.Drugs"/>
 
     <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
     <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->

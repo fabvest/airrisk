@@ -31,6 +31,7 @@
         <class>model.Report</class>
         <class>model.Substance</class>
         <class>model.Result</class>
+        <class>model.Drugs</class>
 
 
         <properties>
