@@ -43,12 +43,13 @@ public class Formula {
             e.printStackTrace();
         }
 
-        result = AC / drug.getRfC();
+        //result = AC / drug.getRfC();
+        result = AC / 0.302221;
 
         return result;
     }
 
-    public static void calculate(Long id, int idDrug){
+    public static void calculate(Long id){
         Report report = new Report();
         RepoImpl repo = new RepoImpl();
         ArrayList<Substance> substance = new ArrayList<Substance>();

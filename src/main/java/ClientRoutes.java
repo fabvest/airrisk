@@ -1,11 +1,11 @@
-import model.Drugs;
-import model.Report;
-import model.Result;
-import model.Substance;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import model.*;
 import repository.RepoImpl;
 import site.BaseRoutes;
 import spark.ModelAndView;
 import utils.Formula;
+import utils.Utils;
 import utils.VelocityTemplateEngine;
 
 import java.util.ArrayList;
@@ -55,33 +55,20 @@ public class ClientRoutes extends BaseRoutes {
 
         post(ROOT + "getinfo", (request, response) -> {
             System.out.println(request.headers());
-            System.out.println(request.body()); //
+            System.out.println(request.body());
             HashMap<String, Object> model = new HashMap<>();
 
-//            String org = request.queryParams("org");
-//            String city = request.queryParams("city");
-//            String district = request.queryParams("district");
-//            String street = request.queryParams("street");
-//            String house = request.queryParams("house");
-//            String category = request.queryParams("category");
-//            String[] cat = category.split("-");
-//            String drug = request.queryParams("drug");
-//            String unit = request.queryParams("unit");
-//            String concentration = request.queryParams("concentration");
-//            String date = request.queryParams("date");
-//
-//            Report report = new Report(org, city, district, street, house, Integer.parseInt(cat[1]), date);
-//            repo.addObject(report);
-//
-//            Substance substance = new Substance(drug, unit, Double.valueOf(concentration), report);
-//            repo.addObject(substance);
-//
-//            Result result = new Result("new", 0.32323, true, report);
-//            repo.addObject(result);
-//
-//            log.info( org+ city+ district+ street+ house+ category+ date + drug + unit + concentration);
-//
-//            Formula.calculate(report.getId());
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            Gson gson = gsonBuilder.create();
+
+            UserInfo userInfo = gson.fromJson(request.body(), UserInfo.class);
+
+            System.out.println(userInfo.toString());
+
+            Utils utils = new Utils();
+            Long id = utils.convertAndSave(userInfo);
+
+            Formula.calculate(id);
             return new ModelAndView(model, "/public/index.html");
         }, new VelocityTemplateEngine());
     }
