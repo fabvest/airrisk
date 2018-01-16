@@ -1,5 +1,6 @@
 package utils;
 
+import model.Drugs;
 import model.Report;
 import model.Result;
 import model.Substance;
@@ -9,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Formula {
-
     public static Double riskCarcinogens(int type, double cA, double cH){
         double result;
 
@@ -33,14 +33,24 @@ public class Formula {
         return result;
     }
 
-    public Float riskNoncarcinogenic(){
+    public static double riskNoncarcinogenic(int idDgug, double AC){
+        double result;
+        Drugs drug = new Drugs();
+        RepoImpl repo = new RepoImpl();
+        try {
+            drug = (Drugs) repo.getObject(Drugs.class, Long.valueOf(idDgug));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        return null;
+        result = AC / drug.getRfC();
+
+        return result;
     }
 
-    public static void calculate(Long id){
-        RepoImpl repo = new RepoImpl();
+    public static void calculate(Long id, int idDrug){
         Report report = new Report();
+        RepoImpl repo = new RepoImpl();
         ArrayList<Substance> substance = new ArrayList<Substance>();
         try {
             report = (Report) repo.getObject(Report.class, id);
@@ -51,8 +61,18 @@ public class Formula {
 
         for(int i = 0; i < substance.size(); i++){
             Substance sub = substance.get(i);
-            double res = riskCarcinogens(report.getCategory(), sub.getValue(), sub.getValue());
-            Result result = new Result(sub.getName(), res, true, report);
+            double resC = riskCarcinogens(report.getCategory(), sub.getValue(), sub.getValue());
+            Result result = new Result(sub.getName(), resC, true, report);
+            try {
+                repo.addObject(result);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        for(int i = 0; i < substance.size(); i++){
+            Substance sub = substance.get(i);
+            double resNC = riskNoncarcinogenic(sub.getRefId(), sub.getValue());
+            Result result = new Result(sub.getName(), resNC, false, report);
             try {
                 repo.addObject(result);
             } catch (SQLException e) {

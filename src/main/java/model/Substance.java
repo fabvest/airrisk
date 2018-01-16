@@ -22,18 +22,30 @@ public class Substance {
     @Column(name = "value", nullable = false)
     private double value;
 
+    @Column(name = "refId")
+    private int refId;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id", nullable = false)
     private Report report;
 
-    public Substance(String name, String type, double value, Report report) {
+    public Substance(String name, String type, double value, Report report, int refId) {
         this.name = name;
         this.type = type;
         this.value = value;
         this.report = report;
+        this.refId = refId;
     }
 
     public Substance() {
+    }
+
+    public int getRefId() {
+        return refId;
+    }
+
+    public void setRefId(int refId) {
+        this.refId = refId;
     }
 
     public Long getId() {

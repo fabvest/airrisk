@@ -1,3 +1,4 @@
+import model.Drugs;
 import model.Report;
 import model.Result;
 import model.Substance;
@@ -56,6 +57,7 @@ public class ClientRoutes extends BaseRoutes {
             System.out.println(request.headers());
             System.out.println(request.body()); //
             HashMap<String, Object> model = new HashMap<>();
+
 //            String org = request.queryParams("org");
 //            String city = request.queryParams("city");
 //            String district = request.queryParams("district");
