@@ -24,6 +24,12 @@ public class ClientRoutes extends BaseRoutes {
 
     @Override
     public void routes() {
+        get(ROOT, (request, response) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "/public/index.html");
+        }, new VelocityTemplateEngine());
+
+
         get(ROOT + "index", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "/public/index.html");
