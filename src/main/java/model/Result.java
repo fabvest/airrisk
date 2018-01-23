@@ -22,7 +22,7 @@ public class Result {
     private boolean type;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "repo_id", nullable = false)
     private Report report;
 
     public Result(String res_name, double value, boolean type, Report report) {

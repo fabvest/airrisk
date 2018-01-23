@@ -48,12 +48,12 @@ public class ClientRoutes extends BaseRoutes {
 //            Long id = Long.parseLong(request.splat()[0]);
             Long id = Long.valueOf(request.params(":id"));
             Report report = (Report) repo.getObject(Report.class, id);
-            ArrayList<Substance> substance = repo.getSubByReport(id);
+//            ArrayList<Substance> substance = repo.getSubByReport(id);
             ArrayList<Result> results = repo.getResByReport(id);
 
 //            Holder holder = new Holder(report, substance, results);
             model.put("Report", report);
-            model.put("Substance", substance);
+//            model.put("Substance", substance);
             model.put("Result", results);
 
             return new ModelAndView(model, "/public/report.html");

@@ -12,6 +12,6 @@ public class ArrayDrag {
     public Integer unit;
     @SerializedName("concentration")
     @Expose
-    public Integer concentration;
+    public Double concentration;
 
 }

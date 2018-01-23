@@ -48,7 +48,7 @@ public class RepoImpl implements RepoInterface {
             o = s.get(clazz, id);
             tx.commit();
         }catch (Exception e){
-            System.out.println("error with get event by id");
+            System.out.println("error with get some obj by id");
         }finally {
             if(s != null && s.isOpen()) {
                 s.close();
@@ -68,7 +68,7 @@ public class RepoImpl implements RepoInterface {
             ev = (ArrayList) session.createCriteria(clazz).list();
             tx.commit();
         } catch (Exception e) {
-            System.out.println("error with get all ev types");
+            System.out.println("error with get all obj types");
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -87,7 +87,7 @@ public class RepoImpl implements RepoInterface {
             query.setParameter("id", id);
             l = (ArrayList<Substance>) query.list();
         }catch (Exception e){
-            System.out.println("error with get event by email");
+            System.out.println("error with get subst by id");
         }finally {
             if(s != null && s.isOpen()) {
                 s.close();
@@ -102,11 +102,11 @@ public class RepoImpl implements RepoInterface {
         ArrayList<Result> l = null;
         try {
             s = HibernateUtil.getSession();
-            Query query = s.createQuery("from Result where id = :id");
+            Query query = s.createQuery("from Result where repo_id = :id");
             query.setParameter("id", id);
             l = (ArrayList<Result>) query.list();
         }catch (Exception e){
-            System.out.println("error with get event by email");
+            System.out.println("error with get results by pero_id");
         }finally {
             if(s != null && s.isOpen()) {
                 s.close();
