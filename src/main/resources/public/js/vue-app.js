@@ -119,7 +119,6 @@ var DrugControlForm = {
     }
   },
   created () {
-    console.log('create component before');
     this.$http.get('drugs.json').then(
       (data) => {
         this.arrayDrug = data.body.data;
