@@ -1,23 +1,13 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "drugs")
 public class Drugs {
-    @javax.persistence.Id
-    @Column(name = "id")
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Id
+    private long id;
 
     @Column(name = "IUPAC")
     private String IUPAC;
@@ -100,6 +90,14 @@ public class Drugs {
 
     public void setIUPAC(String IUPAC) {
         this.IUPAC = IUPAC;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCAS() {
@@ -228,5 +226,29 @@ public class Drugs {
 
     public void setKoc(double koc) {
         Koc = koc;
+    }
+
+    @Override
+    public String toString() {
+        return "Drugs{" +
+                "id=" + id +
+                ", IUPAC='" + IUPAC + '\'' +
+                ", CAS='" + CAS + '\'' +
+                ", M=" + M +
+                ", RfC=" + RfC +
+                ", RfD=" + RfD +
+                ", GIABS=" + GIABS +
+                ", H=" + H +
+                ", Dw=" + Dw +
+                ", Da=" + Da +
+                ", Organs='" + Organs + '\'' +
+                ", Carcinogenic='" + Carcinogenic + '\'' +
+                ", Vp=" + Vp +
+                ", t=" + t +
+                ", S=" + S +
+                ", Kow=" + Kow +
+                ", Kp=" + Kp +
+                ", Koc=" + Koc +
+                '}';
     }
 }

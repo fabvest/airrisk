@@ -38,7 +38,7 @@ public class ClientRoutes extends BaseRoutes {
 
         get(ROOT + "archive", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
-            ArrayList<Report> report = repo.getAllObjects(Report.class);
+            ArrayList<Report> report = (ArrayList<Report>) repo.getAllObjects(Report.class);
             model.put("Report", report);
             return new ModelAndView(model, "/public/archive.html");
         }, new VelocityTemplateEngine());

@@ -1,5 +1,6 @@
 package repository;
 
+import model.Drugs;
 import model.Report;
 import model.Result;
 import model.Substance;
@@ -10,8 +11,9 @@ import utils.HibernateUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class RepoImpl implements RepoInterface {
+public class RepoImpl<T> implements RepoInterface {
     public RepoImpl() {
     }
 
@@ -47,7 +49,10 @@ public class RepoImpl implements RepoInterface {
             o = s.get(clazz, id);
             tx.commit();
         }catch (Exception e){
-            System.out.println("error with get some obj by id");
+            System.out.println("error with get some obj by id" + clazz.getName());
+            e.printStackTrace();
+            System.out.println(e.toString());
+            System.out.println(e.getMessage());
         }finally {
             if(s != null && s.isOpen()) {
                 s.close();
@@ -57,14 +62,14 @@ public class RepoImpl implements RepoInterface {
     }
 
     @Override
-    public ArrayList<Report> getAllObjects(Class clazz) throws SQLException {
+    public List<Object> getAllObjects(Class clazz) throws SQLException {
         Session session = null;
         Transaction tx = null;
-        ArrayList ev = new ArrayList<>();
+        List ev = new ArrayList<>();
         try {
             session = HibernateUtil.getSession();
             tx = session.beginTransaction();
-            ev = (ArrayList) session.createCriteria(clazz).list();
+            ev = session.createCriteria(clazz).list();
             tx.commit();
         } catch (Exception e) {
             System.out.println("error with get all obj types");
@@ -106,6 +111,28 @@ public class RepoImpl implements RepoInterface {
             l = (ArrayList<Result>) query.list();
         }catch (Exception e){
             System.out.println("error with get results by pero_id");
+        }finally {
+            if(s != null && s.isOpen()) {
+                s.close();
+            }
+        }
+        return l;
+    }
+
+    @Override
+    public ArrayList<Drugs> getDrugById(long id) throws SQLException {
+        Session s = null;
+        ArrayList<Drugs> l = null;
+        try {
+            s = HibernateUtil.getSession();
+            Query query = s.createQuery("from Drugs where id = :id");
+            query.setParameter("id", id);
+            l = (ArrayList<Drugs>) query.list();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.toString();
+            e.getMessage();
+            System.out.println("error with get drugs by id");
         }finally {
             if(s != null && s.isOpen()) {
                 s.close();

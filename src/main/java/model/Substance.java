@@ -87,4 +87,16 @@ public class Substance {
     public void setReport(Report report) {
         this.report = report;
     }
+
+    @Override
+    public String toString() {
+        return "Substance{" +
+                "sub_id=" + sub_id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", value=" + value +
+                ", refId=" + refId +
+                ", report=" + report +
+                '}';
+    }
 }

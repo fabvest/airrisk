@@ -1,11 +1,13 @@
 package utils;
 
+import jdk.nashorn.internal.parser.JSONParser;
 import model.Drugs;
 import model.Report;
 import model.Result;
 import model.Substance;
 import repository.RepoImpl;
 
+import java.io.FileReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -38,7 +40,7 @@ public class Formula {
         Drugs drug = new Drugs();
         RepoImpl repo = new RepoImpl();
         try {
-            drug = (Drugs) repo.getObject(Drugs.class, Long.valueOf(idDgug));
+            drug = (Drugs) repo.getObject(Drugs.class, (long) idDgug);
         } catch (SQLException e) {
             e.printStackTrace();
         }

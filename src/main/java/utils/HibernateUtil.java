@@ -1,5 +1,6 @@
 package utils;
 
+import model.Drugs;
 import model.Report;
 import model.Result;
 import model.Substance;
@@ -41,6 +42,7 @@ public class HibernateUtil {
             configuration.configure()
                     .addAnnotatedClass(Report.class)
                     .addAnnotatedClass(Substance.class)
+                    .addAnnotatedClass(Drugs.class)
                     .addAnnotatedClass(Result.class);
 
 

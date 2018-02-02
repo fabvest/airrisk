@@ -32,12 +32,12 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5566/airrisk"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5566/airrisk?currentSchema=public"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="fabvest"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>
