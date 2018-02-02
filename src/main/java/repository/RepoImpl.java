@@ -10,7 +10,6 @@ import utils.HibernateUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class RepoImpl implements RepoInterface {
     public RepoImpl() {
@@ -83,7 +82,7 @@ public class RepoImpl implements RepoInterface {
         ArrayList<Substance> l = null;
         try {
             s = HibernateUtil.getSession();
-            Query query = s.createQuery("from Substance where id = :id");
+            Query query = s.createQuery("from Substance where repo_id = :id");
             query.setParameter("id", id);
             l = (ArrayList<Substance>) query.list();
         }catch (Exception e){

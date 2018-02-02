@@ -3,41 +3,41 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-    <persistence-unit name="dd5jar9534jrm1" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-    <class>model.Report</class>
-    <class>model.Substance</class>
-    <class>model.Result</class>
-    <class>model.Drugs</class>
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-221-251-195.compute-1.amazonaws.com:5432/dd5jar9534jrm1?user=pcdqgjakeabous&amp;password=ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
-            <property name="javax.persistence.jdbc.user" value="pcdqgjakeabous"/>
-            <property name="javax.persistence.jdbc.password" value="ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562"/>
-
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-        </properties>
-    </persistence-unit>
-
-    <!--<persistence-unit name="airrisk" transaction-type="RESOURCE_LOCAL">-->
+    <!--<persistence-unit name="dd5jar9534jrm1" transaction-type="RESOURCE_LOCAL">-->
         <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
 
-        <!--<class>model.Report</class>-->
-        <!--<class>model.Substance</class>-->
-        <!--<class>model.Result</class>-->
-        <!--<class>model.Drugs</class>-->
-
-
+    <!--<class>model.Report</class>-->
+    <!--<class>model.Substance</class>-->
+    <!--<class>model.Result</class>-->
+    <!--<class>model.Drugs</class>-->
         <!--<properties>-->
             <!--<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5566/airrisk"/>-->
-            <!--<property name="javax.persistence.jdbc.user" value="postgres"/>-->
-            <!--<property name="javax.persistence.jdbc.password" value="fabvest"/>-->
+            <!--<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-221-251-195.compute-1.amazonaws.com:5432/dd5jar9534jrm1?user=pcdqgjakeabous&amp;password=ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>-->
+            <!--<property name="javax.persistence.jdbc.user" value="pcdqgjakeabous"/>-->
+            <!--<property name="javax.persistence.jdbc.password" value="ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562"/>-->
 
             <!--<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="create-drop"/>-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="update"/>-->
         <!--</properties>-->
     <!--</persistence-unit>-->
+
+    <persistence-unit name="airrisk" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>model.Report</class>
+        <class>model.Substance</class>
+        <class>model.Result</class>
+        <class>model.Drugs</class>
+
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5566/airrisk"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="fabvest"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        </properties>
+    </persistence-unit>
 </persistence>

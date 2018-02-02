@@ -26,7 +26,7 @@ public class Substance {
     private int refId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "repo_id", nullable = false)
     private Report report;
 
     public Substance(String name, String type, double value, Report report, int refId) {

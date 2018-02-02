@@ -45,10 +45,12 @@
           </thead>
           <tbody>
           #foreach($Results in $Result)
+          #if($Results.type == true)
           <tr>
             <td>$Results.res_name</td>
             <td>$Results.value</td>
           </tr>
+          #end
           #end
           </tbody>
         </table>
@@ -63,12 +65,14 @@
           <th>Риск</th>
           </thead>
           #foreach($Results in $Result)
+          #if($Results.type == false)
           <tbody>
           <tr>
             <td>$Results.res_name</td>
             <td>$Results.value</td>
           </tr>
           </tbody>
+          #end
           #end
         </table>
       </div>
