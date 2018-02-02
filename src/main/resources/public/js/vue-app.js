@@ -43,8 +43,8 @@ var AutocompleteControlForm = {
   },
   methods: {
     getArraySearchValue: function () {
-      if (this.searchValue.length < 0 || this.currentValue && this.searchValue === this.currentValue.text) return [];
-      const arraySearchValue = _.filter(this.arrayObject, (drug) => drug.text.toLowerCase().indexOf(this.searchValue.toLowerCase()) !== -1);
+      if (this.searchValue.length < 0 || this.currentValue && this.searchValue === this.currentValue['IUPAC']) return [];
+      const arraySearchValue = _.filter(this.arrayObject, (drug) => drug['IUPAC'].toLowerCase().indexOf(this.searchValue.toLowerCase()) !== -1);
       return this.searchValue.length ? arraySearchValue : [];
     },
     isShowList: function () {
@@ -52,11 +52,11 @@ var AutocompleteControlForm = {
     },
     selectedValue: function(object) {
       this.currentValue = object;
-      this.searchValue = object.text;
+      this.searchValue = object['IUPAC'];
     },
     onTestValid: function () {
       if (!this.isTouch) return;
-      if (this.currentValue && this.currentValue.text !== this.searchValue) {
+      if (this.currentValue && this.currentValue['IUPAC'] !== this.searchValue) {
         this.currentValue = null;
       }
       this.isValid = !!this.currentValue;
@@ -94,7 +94,7 @@ var AutocompleteControlForm = {
           v-on:click="selectedValue(item)"
           class="list-group-item list-group-item-action"
         >
-        {{ item.text }}
+        {{ item.IUPAC }}
         </li>
       </ul>
       <p v-bind:class="{ 'display-block': showErrorMessage() }" class="invalid-feedback">
@@ -109,11 +109,7 @@ var DrugControlForm = {
     return {
       unitControl: new CreateFormControl('unitControl'),
       concentrationControl: new CreateFormControl('concentrationControl'),
-      arrayDrug: [
-        { id: 1, text: 'Морфий' },
-        { id: 2, text: 'Свинец' },
-        { id: 3, text: 'Амиак' }
-      ],
+      arrayDrug: [],
       arrayUnit: [
         { id: 1, text: 'мг/см3' },
         { id: 2, text: 'г/м3' },
@@ -121,6 +117,14 @@ var DrugControlForm = {
       ],
       errorMessageDrug: 'Вы не выбрали вещество.'
     }
+  },
+  created () {
+    this.$http.get('drugs.json').then(
+      (data) => {
+        this.arrayDrug = data.body.data;
+      },
+      (error) => console.error(error)
+    );
   },
   watch: {
     'unitControl.value': createWatchValue('unitControl'),
