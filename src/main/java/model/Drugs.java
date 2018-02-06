@@ -9,55 +9,55 @@ public class Drugs {
     @Id
     private long id;
 
-    @Column(name = "IUPAC")
+    @Column(name = "iupac")
     private String IUPAC;
 
-    @Column(name = "CAS")
+    @Column(name = "cas")
     private String CAS;
 
-    @Column(name = "M")
+    @Column(name = "m")
     private double M;
 
-    @Column(name = "RfC")
+    @Column(name = "rfc")
     private double RfC;
 
-    @Column(name = "RfD")
+    @Column(name = "rfd")
     private double RfD;
 
-    @Column(name = "GIABS")
+    @Column(name = "giabs")
     private double GIABS;
 
-    @Column(name = "H")
+    @Column(name = "h")
     private double H;
 
-    @Column(name = "Dw")
+    @Column(name = "dw")
     private double Dw;
 
-    @Column(name = "Da")
+    @Column(name = "da")
     private double Da;
 
-    @Column(name = "Organs")
+    @Column(name = "organs")
     private String Organs;
 
-    @Column(name = "Carcinogenic")
+    @Column(name = "carcinogenic")
     private String Carcinogenic;
 
-    @Column(name = "Vp")
+    @Column(name = "vp")
     private double Vp;
 
     @Column(name = "t")
     private int t;
 
-    @Column(name = "S")
+    @Column(name = "s")
     private double S;
 
-    @Column(name = "Kow")
+    @Column(name = "kow")
     private double Kow;
 
-    @Column(name = "Kp")
+    @Column(name = "kp")
     private double Kp;
 
-    @Column(name = "Koc")
+    @Column(name = "koc")
     private double Koc;
 
     public Drugs(int id, String IUPAC, String CAS, double m, double rfC, double rfD, double GIABS, double h, double dw, double da, String organs, String carcinogenic, double vp, int t, double s, double kow, double kp, double koc) {
