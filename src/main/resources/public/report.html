@@ -32,9 +32,24 @@
 <main class="report-main-custom">
   <div class="report-custom row">
     <img class="col-md-2" width="100px" height="110px" src="/img/response-img.png" alt="text"/>
+    #if($Report.category == 1)
     <p class="col-md-10 title-style">
-      Отчет по оценке риска здоровью для подростков по адресу ул. Травянаая, д. 28, Октябрь район, Самара за 2015-2016 год.
+      Отчет по оценке риска здоровью для детей по адресу ул. $Report.street, д. $Report.houseNumber, $Report.neighborhood район,
+      за $Report.start_per - $Report.stop_per год.
     </p>
+    #end
+    #if($Report.category == 2)
+    <p class="col-md-10 title-style">
+      Отчет по оценке риска здоровью для подростков по адресу ул. $Report.street, д. $Report.houseNumber, $Report.neighborhood район,
+      за $Report.start_per - $Report.stop_per год.
+    </p>
+    #end
+    #if($Report.category == 3)
+    <p class="col-md-10 title-style">
+      Отчет по оценке риска здоровью для взрослых по адресу ул. $Report.street, д. $Report.houseNumber, $Report.neighborhood район,
+      за $Report.start_per - $Report.stop_per год.
+    </p>
+    #end
     <div class="row">
       <div class="col-md-5">
         <label class="label-custom" for="t1">Канцерогенный риск</label>

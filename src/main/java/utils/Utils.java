@@ -1,9 +1,6 @@
 package utils;
 
-import model.ArrayDrag;
-import model.Report;
-import model.Substance;
-import model.UserInfo;
+import model.*;
 import repository.RepoImpl;
 
 import java.sql.SQLException;
@@ -35,9 +32,14 @@ public class Utils {
         }
 
         ArrayList<ArrayDrag> arrayDrag = userInfo.getArrayDrag();
-
+        Drugs drugs = new Drugs();
         for (ArrayDrag f : arrayDrag) {
-            substance.setName("Амиак");
+            try {
+                drugs = (Drugs) repo.getObject(Drugs.class, (long) f.drug);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            substance.setName(drugs.getIUPAC());
             //TODO переделать
             substance.setType(String.valueOf(f.unit));
             substance.setValue(f.concentration);

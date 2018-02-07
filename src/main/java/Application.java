@@ -15,10 +15,6 @@ public class Application {
 
         port(port);
 
-//        Integer port = 5555;
-//
-//        port(port);
-
         new ClientRoutes();
     }
 }
