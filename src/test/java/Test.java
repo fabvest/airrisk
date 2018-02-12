@@ -12,20 +12,20 @@ public class Test {
     void drugTest(){
         RepoImpl repo = new RepoImpl();
 
-        try {
-//            ArrayList<Drugs> drugs = repo.getDrugById(3L);
-//            Drugs drugss = drugs.get(0);
-//            drugss.toString();
-            Substance substance = (Substance) repo.getObject(Substance.class, 1L);
-            Drugs drugs1 = (Drugs) repo.getObject(Drugs.class, 1L);
-//            System.out.println(substance.toString());
-            System.out.println(drugs1.toString());
-//            drugs.toString();
-
-            //ArrayList<Drugs> drugs1 = (ArrayList<Drugs>) repo.getAllObjects(Drugs.class);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            ArrayList<Drugs> drugs = repo.getDrugById(3L);
+////            Drugs drugss = drugs.get(0);
+////            drugss.toString();
+//            Substance substance = (Substance) repo.getObject(Substance.class, 1L);
+//            Drugs drugs1 = (Drugs) repo.getObject(Drugs.class, 1L);
+////            System.out.println(substance.toString());
+//            System.out.println(drugs1.toString());
+////            drugs.toString();
+//
+//            //ArrayList<Drugs> drugs1 = (ArrayList<Drugs>) repo.getAllObjects(Drugs.class);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
 
     }

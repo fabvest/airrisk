@@ -1,5 +1,6 @@
 package utils;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
 import model.Drugs;
 import model.Report;
 import model.Result;
@@ -8,6 +9,7 @@ import repository.RepoImpl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Formula {
 
@@ -59,7 +61,8 @@ public class Formula {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            if(drug.getCarcinogenic().equals("ИСТИНА")) {
+            String carc = drug.getCarcinogenic();
+            if(carc.length() == 6) {
                 double resC = riskCarcinogens(report.getCategory(), sub.getValue(), sub.getValue());
                 Result result = new Result(sub.getName(), resC, true, report);
                 try {
@@ -76,7 +79,8 @@ public class Formula {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            if(drug.getCarcinogenic().equals("ЛОЖЬ")) {
+            String carc = drug.getCarcinogenic();
+            if(carc.length() == 4) {
                 double resNC = riskNoncarcinogenic(drug, sub.getValue());
                 Result result = new Result(sub.getName(), resNC, false, report);
                 try {

@@ -3,32 +3,15 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
-    <property name="connection.url">jdbc:postgresql://localhost:5566/airrisk?currentSchema=public</property>
-    <property name="connection.driver_class">org.postgresql.Driver</property>
-    <property name="connection.username">postgres</property>
-    <property name="connection.password">fabvest</property>
-    <property name="hibernate.connection.autocommit">true</property>
-    <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
-    <property name="hbm2ddl.auto">update</property>
-
-    <mapping class="model.Substance"/>
-    <mapping class="model.Report"/>
-    <mapping class="model.Result"/>
-    <mapping class="model.Drugs"/>
-
-    <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
-    <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->
-    </session-factory>
     <!--<session-factory>-->
         <!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>-->
-        <!--<property name="connection.url">jdbc:postgresql://ec2-54-221-251-195.compute-1.amazonaws.com:5432/dd5jar9534jrm1?user=pcdqgjakeabous&amp;password=ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</property>-->
+        <!--<property name="connection.url">jdbc:postgresql://localhost:5566/airrisk?currentSchema=public</property>-->
         <!--<property name="connection.driver_class">org.postgresql.Driver</property>-->
-        <!--<property name="connection.username">pcdqgjakeabous</property>-->
-        <!--<property name="connection.password">ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562</property>-->
+        <!--<property name="connection.username">postgres</property>-->
+        <!--<property name="connection.password">fabvest</property>-->
+        <!--<property name="hibernate.connection.autocommit">true</property>-->
         <!--<property name="hibernate.current_session_context_class">thread</property>-->
+        <!--<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>-->
         <!--<property name="hbm2ddl.auto">update</property>-->
 
         <!--<mapping class="model.Substance"/>-->
@@ -39,4 +22,21 @@
         <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
         <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->
     <!--</session-factory>-->
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+        <property name="connection.url">jdbc:postgresql://ec2-54-221-251-195.compute-1.amazonaws.com:5432/dd5jar9534jrm1?user=pcdqgjakeabous&amp;password=ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.username">pcdqgjakeabous</property>
+        <property name="connection.password">ae72d0ef86a438129731c973d1a3d851c33562bd5453752c2c78f166c6418562</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <mapping class="model.Substance"/>
+        <mapping class="model.Report"/>
+        <mapping class="model.Result"/>
+        <mapping class="model.Drugs"/>
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
 </hibernate-configuration>
