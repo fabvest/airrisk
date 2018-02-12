@@ -241,7 +241,9 @@ new Vue({
     },
     postDataForm (data) {
       this.$http.post('/getinfo', data).then(
-        (response) => console.log(response), // successful
+        () => {
+          window.location.href = 'archive';
+        }, // successful
         (error) => console.error(error) // error
       );
     },
