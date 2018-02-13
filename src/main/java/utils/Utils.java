@@ -24,6 +24,7 @@ public class Utils {
         report.setStart_ref(String.valueOf(userInfo.startPerMonthControl));
         report.setStop_per(String.valueOf(userInfo.endPerYearControl));
         report.setStop_ref(String.valueOf(userInfo.endPerMonthControl));
+        report.setDanger((short) 0);
 
         try {
             repo.addObject(report);

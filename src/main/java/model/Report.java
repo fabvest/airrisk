@@ -46,10 +46,13 @@ public class Report  {
     @Column(name = "stop_ref")
     private String stop_ref;
 
+    @Column(name = "danger")
+    private short danger;
+
 
 
     public Report(String organization, String city, String neighborhood, String street, String houseNumber,
-                  int category, String date, String start_per, String start_ref, String stop_per, String stop_ref) {
+                  int category, String date, String start_per, String start_ref, String stop_per, String stop_ref, short danger) {
         this.organization = organization;
         this.city = city;
         this.neighborhood = neighborhood;
@@ -61,6 +64,7 @@ public class Report  {
         this.start_ref = start_ref;
         this.stop_per = stop_per;
         this.stop_ref = stop_ref;
+        this.danger = danger;
     }
 
     public Report() {
@@ -72,6 +76,14 @@ public class Report  {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public short getDanger() {
+        return danger;
+    }
+
+    public void setDanger(short danger) {
+        this.danger = danger;
     }
 
     public String getOrganization() {

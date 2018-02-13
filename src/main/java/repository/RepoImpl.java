@@ -140,4 +140,23 @@ public class RepoImpl<T> implements RepoInterface {
         }
         return l;
     }
+
+    @Override
+    public void updateObject(Object o) throws SQLException {
+        Session s = null;
+        Transaction tx = null;
+
+        try {
+            s = HibernateUtil.getSession();
+            tx = s.beginTransaction();
+            s.update(o);
+            tx.commit();
+        }catch (Exception e){
+            System.out.println("err w update object");
+        }finally {
+            if(s != null && s.isOpen()){
+                s.close();
+            }
+        }
+    }
 }

@@ -15,4 +15,5 @@ public interface RepoInterface<T> {
     ArrayList<Substance> getSubByReport(long id) throws SQLException;
     ArrayList<Result> getResByReport(long id) throws SQLException;
     ArrayList<Drugs> getDrugById(long id) throws SQLException;
+    void updateObject(Object o) throws  SQLException;
 }

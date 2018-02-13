@@ -43,6 +43,7 @@ public class Formula {
     }
 
     public static void calculate(Long id){
+        short danger = 0;
         Report report = new Report();
         RepoImpl repo = new RepoImpl();
         Drugs drug = new Drugs();
@@ -64,6 +65,9 @@ public class Formula {
             String carc = drug.getCarcinogenic();
             if(carc.length() == 6) {
                 double resC = riskCarcinogens(report.getCategory(), sub.getValue(), sub.getValue());
+                if(resC > 1L){
+                    danger = 1;
+                }
                 Result result = new Result(sub.getName(), resC, true, report);
                 try {
                     repo.addObject(result);
@@ -82,6 +86,9 @@ public class Formula {
             String carc = drug.getCarcinogenic();
             if(carc.length() == 4) {
                 double resNC = riskNoncarcinogenic(drug, sub.getValue());
+                if(resNC > 1L){
+                    danger = 1;
+                }
                 Result result = new Result(sub.getName(), resNC, false, report);
                 try {
                     repo.addObject(result);
@@ -89,6 +96,12 @@ public class Formula {
                     e.printStackTrace();
                 }
             }
+        }
+        try {
+            report.setDanger(danger);
+            repo.updateObject(report);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
